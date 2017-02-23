@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Facebook } from 'ionic-native';
+import { Facebook } from '@ionic-native/facebook';
 import { NavController } from 'ionic-angular';
 
 import firebase from 'firebase';
@@ -12,7 +12,7 @@ export class HomePage {
   userProfile: any = null;
   constructor(public navCtrl: NavController) {}
 
-  facebookLogin(){
+  facebookLogin(): void {
     Facebook.login(['email']).then( (response) => {
       const facebookCredential = firebase.auth.FacebookAuthProvider
         .credential(response.authResponse.accessToken);
