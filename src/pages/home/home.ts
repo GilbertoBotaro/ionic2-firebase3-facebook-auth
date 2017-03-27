@@ -10,10 +10,10 @@ import firebase from 'firebase';
 })
 export class HomePage {
   userProfile: any = null;
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController, private facebook: Facebook) {}
 
   facebookLogin(): void {
-    Facebook.login(['email']).then( (response) => {
+    this.facebook.login(['email']).then( (response) => {
       const facebookCredential = firebase.auth.FacebookAuthProvider
         .credential(response.authResponse.accessToken);
 
@@ -28,6 +28,4 @@ export class HomePage {
 
     }).catch((error) => { console.log(error) });
   }
-
-
 }

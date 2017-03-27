@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/statusbar';
-import { Splashscreen } from '@ionic-native/splashscreen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 
@@ -14,7 +14,7 @@ import firebase from 'firebase';
 export class MyApp {
   rootPage = HomePage;
 
-  constructor(platform: Platform) {
+  constructor(platform: Platform, private statusBar: StatusBar, private splashScreen: SplashScreen) {
     const firebaseConfig = {
       apiKey: "AIzaSyALKfevapBOYK202f6k5mPPfMrT1MHDv5A",
         authDomain: "bill-tracker-e5746.firebaseapp.com",
@@ -27,8 +27,8 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
-      Splashscreen.hide();
+      statusBar.styleDefault();
+      splashScreen.hide();
     });
   }
 }
